@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuang.dao.UserBookMapper">
+    <insert id="addUserBook" parameterType="UserBook">
+        insert into ssmbuild.user_book values(#{id},#{bookid},#{bookname},#{bookcount})
+    </insert>
+    <delete id="deleteUserBook" parameterType="UserBook">
+        delete from user_book where id=#{id} and bookid=#{bookid}
+    </delete>
+    <update id="updateUserBook" parameterType="UserBook">
+        update user_book set bookcount=bookcount+1 where id=#{id} and bookid=#{bookid}
+    </update>
+    <select id="queryAllUserBook" resultType="UserBook">
+        select * from user_book
+    </select>
+    <select id="queryAllUserBookById" parameterType="String" resultType="UserBook">
+        select * from user_book where id=#{id}
+    </select>
+    <select id="queryAllUserBookByIdByName" parameterType="UserBook" resultType="UserBook">
+        select * from user_book where id=#{id} and bookid=#{bookid}
+    </select>
+</mapper>
